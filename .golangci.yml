@@ -1,0 +1,41 @@
+version: "2"
+
+issues:
+  max-same-issues: 50
+
+linters:
+  enable:
+    - errcheck        # проверка необработанных ошибок
+    - govet           # стандартный анализатор Go
+    - ineffassign     # неиспользуемые присваивания
+    - staticcheck     # расширенный статический анализ
+    - unused          # неиспользуемый код
+    - revive          # замена golint
+    - bodyclose       # проверка закрытия HTTP response body
+    - sqlclosecheck   # проверка закрытия sql.Rows и sql.Stmt
+    - errname         # правильное именование ошибок
+    - goconst         # повторяющиеся строки → константы
+    - dupl            # дублирование кода
+
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+  
+  govet:
+    enable-all: true
+    disable:
+      - fieldalignment
+  
+  staticcheck:
+    checks: ["all"]
+
+exclusions:
+  presets:
+    - std-error-handling
+    - common-false-positives
+  rules:
+    - path: '_test\.go'
+      linters:
+        - errcheck
+        - dupl
+        - funlen
