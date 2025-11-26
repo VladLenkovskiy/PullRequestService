@@ -88,5 +88,5 @@ func (h *TeamHandler) DeactivateTeam(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	handlers.RespondJSON(w, http.StatusOK, nil)
+	handlers.RespondJSON(w, http.StatusOK, dto.DeactivateOut{Status: "deactivated"})
 }

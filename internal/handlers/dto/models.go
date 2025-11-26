@@ -66,11 +66,6 @@ type TeamWrapper struct {
 	Team CreateTeamOut `json:"team"`
 }
 
-type DeactivateTeamIn struct {
-	TeamName string `json:"team_name" validate:"required"`
-}
-
-type DeactivateTeamOut struct {
-	TeamName      string `json:"team_name"`
-	AffectedUsers int64  `json:"affected_users"`
+type DeactivateOut struct {
+	Status string `json:"deactivated"`
 }
